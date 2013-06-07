@@ -9,8 +9,8 @@ namespace Clouds.Storage.Core.Interfaces
 {
     public interface IStorageProvider
     {
-        Task<StorageDirectory> CreateDirectory(StorageDirectory parent, string name);
+        Task<IStorageDirectory> CreateDirectory(IStorageDirectory parent, string name);
 
-        Task CreateFile(StorageDirectory directory, string name, Stream file);
+        Task CreateFile(IStorageDirectory directory, string name, Stream file);
     }
 }

@@ -39,10 +39,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Interfaces\IStorageClient.cs" />
+    <Compile Include="Interfaces\IStorageFile.cs" />
+    <Compile Include="Interfaces\IStorageProvider.cs" />
     <Compile Include="StorageClient.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="StorageDirectory.cs" />
+    <Compile Include="Interfaces\IStorageDirectory.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Clouds.Common\Clouds.Common.csproj">

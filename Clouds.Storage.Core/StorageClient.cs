@@ -24,16 +24,16 @@ namespace Clouds.Storage.Core
         }
 
         //public Task<StorageDirectory> CreateDirectory(string path)
-        //{ 
+        //{
 
         //}
 
-        public Task<StorageDirectory> CreateDirectory(StorageDirectory parent, string name)
+        public Task<IStorageDirectory> CreateDirectory(IStorageDirectory parent, string name)
         {
             return _provider.CreateDirectory(parent, name);
         }
 
-        public Task CreateFile(StorageDirectory directory, string name, Stream file)
+        public Task CreateFile(IStorageDirectory directory, string name, Stream file)
         {
             return _provider.CreateFile(directory, name, file); 
         }

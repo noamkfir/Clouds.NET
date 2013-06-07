@@ -10,6 +10,16 @@ namespace Clouds.Common.Configuration
     public class CloudsDotNetSection : ConfigurationSection
     {
         [ConfigurationProperty("Connection")]
-        public ConnectionElement Connection { get; set; }
+        public ConnectionElement Connection
+        {
+            get
+            {
+                return (ConnectionElement)this["Connection"];
+            }
+            set
+            { 
+                this["Connection"] = value; 
+            }
+        }
     }
 }
