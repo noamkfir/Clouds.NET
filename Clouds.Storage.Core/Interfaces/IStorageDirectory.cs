@@ -12,7 +12,11 @@ namespace Clouds.Storage.Core.Interfaces
         /// </summary>
         Uri Uri { get; }
 
+        String Name { get; }
+
         IStorageDirectory GetParent();
+
+        IStorageDirectory GetRoot();
 
         IEnumerable<IStorageDirectory> GetDirectories();
 
