@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Clouds.Storage.Azure", "Clo
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Clouds.Storage.Local", "Clouds.Storage.Local\Clouds.Storage.Local.csproj", "{3B8CD942-E285-4F7C-8D67-5677871BCFA2}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Clouds.Storage.AWS.Tests", "Clouds.Storage.AWS.Tests\Clouds.Storage.AWS.Tests.csproj", "{F83C7900-766D-4392-A5F2-571BB56AFDC7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -37,6 +39,10 @@ Global
 		{3B8CD942-E285-4F7C-8D67-5677871BCFA2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3B8CD942-E285-4F7C-8D67-5677871BCFA2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3B8CD942-E285-4F7C-8D67-5677871BCFA2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F83C7900-766D-4392-A5F2-571BB56AFDC7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F83C7900-766D-4392-A5F2-571BB56AFDC7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F83C7900-766D-4392-A5F2-571BB56AFDC7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F83C7900-766D-4392-A5F2-571BB56AFDC7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

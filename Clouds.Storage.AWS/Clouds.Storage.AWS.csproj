@@ -30,6 +30,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AWSSDK, Version=1.5.21.0, Culture=neutral, PublicKeyToken=9f476d3089b52be3, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\AWSSDK.1.5.21.0\lib\AWSSDK.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -39,7 +43,23 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AWSStorageDirectory.cs" />
+    <Compile Include="AWSStorageProvider.cs" />
+    <Compile Include="Extensions\StorageDirectoryExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Clouds.Common\Clouds.Common.csproj">
+      <Project>{ef3c4042-2592-4105-80b8-d635a4d40de3}</Project>
+      <Name>Clouds.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Clouds.Storage.Core\Clouds.Storage.Core.csproj">
+      <Project>{1243d2a6-f159-42b4-a5cc-6633223320fe}</Project>
+      <Name>Clouds.Storage.Core</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
