@@ -39,9 +39,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
+    <Compile Include="Interfaces\IStorageClient.cs" />
+    <Compile Include="StorageClient.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="StorageDirectory.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Clouds.Common\Clouds.Common.csproj">
+      <Project>{ef3c4042-2592-4105-80b8-d635a4d40de3}</Project>
+      <Name>Clouds.Common</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

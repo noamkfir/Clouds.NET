@@ -4,9 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Clouds.Storage.Core
+namespace Clouds.Common.Configuration
 {
-    public class Class1
+    public enum CloudProvider
     {
+        Local,
+        Azure,
+        AWS
     }
 }
