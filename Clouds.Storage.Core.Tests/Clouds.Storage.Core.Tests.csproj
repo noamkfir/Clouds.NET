@@ -57,6 +57,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Clouds.Storage.Azure\Clouds.Storage.Azure.csproj">
+      <Project>{7428fbd7-5e5c-4464-b8a6-9702b243fb34}</Project>
+      <Name>Clouds.Storage.Azure</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Clouds.Storage.Core\Clouds.Storage.Core.csproj">
       <Project>{1243d2a6-f159-42b4-a5cc-6633223320fe}</Project>
       <Name>Clouds.Storage.Core</Name>
