@@ -1,25 +1,40 @@
 ﻿using Clouds.Common.Configuration;
-using Clouds.Storage.Core.Interfaces;
+using Clouds.Common.Storage.Interfaces;
 using System;
-using System.Collections.Generic;
+using System.ComponentModel.Composition.Hosting;
+using System.Configuration;
 using System.IO;
 using System.Linq;
-using System.Text;
+using System.Reflection;
 using System.Threading.Tasks;
 
 namespace Clouds.Storage.Core
 {
     public class StorageClient
     {
+
         private IStorageProvider _provider;
 
         public StorageClient(string connectionName)
         {
- 
+            var section = (CloudsDotNetSection)ConfigurationManager.GetSection("CloudsDotNet");
+            var connection = (from c in section.Connections
+                              where c.Name == connectionName
+                              select c).FirstOrDefault();
+
+            Init(connection.ConnectionString, connection.Provider);
         }
 
-        public StorageClient(string connectionStrin, CloudProvider provider)
+        public StorageClient(string connectionString, CloudProvider provider)
         {
+            Init(connectionString, provider);
+        }
+
+        private void Init(string connectionString, CloudProvider provider)
+        {
+            var catalog = new AssemblyCatalog(Assembly.GetExecutingAssembly().CodeBase);
+            var container = new CompositionContainer(catalog);
+            _provider = container.GetExportedValue<IStorageProvider>(provider.ToString());
 
         }
 
@@ -27,6 +42,11 @@ namespace Clouds.Storage.Core
         //{
 
         //}
+
+        public Task<IStorageDirectory> GetDirectory(Uri uri)
+        {
+            return _provider.GetDirectory(uri);
+        }
 
         public Task<IStorageDirectory> CreateDirectory(IStorageDirectory parent, string name)
         {

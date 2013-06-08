@@ -9,16 +9,16 @@ namespace Clouds.Common.Configuration
 {
     public class CloudsDotNetSection : ConfigurationSection
     {
-        [ConfigurationProperty("Connection")]
-        public ConnectionElement Connection
+        [ConfigurationProperty("Connections")]
+        public ConnectionElement[] Connections
         {
             get
             {
-                return (ConnectionElement)this["Connection"];
+                return (ConnectionElement[])this["Connections"];
             }
             set
             { 
-                this["Connection"] = value; 
+                this["Connections"] = value; 
             }
         }
     }

@@ -12,5 +12,6 @@ namespace Clouds.Common.Configuration
 
         public CloudProvider Provider { get; set; }
         public string ConnectionString { get; set; }
+        public string Name { get; set; }
     }
 }

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.IO;
 using System.Threading.Tasks;
-using Clouds.Storage.Core.Interfaces;
+using Clouds.Common.Storage.Interfaces;
 using Microsoft.WindowsAzure.Storage;
 using Microsoft.WindowsAzure.Storage.Blob;
 
@@ -40,6 +40,11 @@ namespace Clouds.Storage.Azure
                     await Task.Factory.FromAsync(blob.BeginUploadFromStream, blob.EndUploadFromStream, file, null);
                 }
             }
+        }
+
+        public Task<IStorageDirectory> GetDirectory(Uri uri)
+        {
+            throw new NotImplementedException();
         }
     }
 }
