@@ -10,6 +10,10 @@ namespace Clouds.Common.Configuration
     public class CloudsDotNetSection : ConfigurationSection
     {
         [ConfigurationProperty("connections")]
+        [ConfigurationCollection(typeof(ConnectionElementCollection),
+                                AddItemName = "add",
+                                ClearItemsName = "clear",
+                                RemoveItemName = "remove")]
         public ConnectionElementCollection Connections
         {
             get

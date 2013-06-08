@@ -9,7 +9,7 @@ namespace Clouds.Storage.Core.Tests
         [TestMethod]
         public void LoadNamedConnectionFromConfiguration_Sccessful()
         {
-
+            var client = new StorageClient("azure");
         }
     }
 }

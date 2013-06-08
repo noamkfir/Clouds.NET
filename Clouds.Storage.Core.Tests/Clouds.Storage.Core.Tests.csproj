@@ -56,6 +56,12 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Clouds.Storage.Core\Clouds.Storage.Core.csproj">
+      <Project>{1243d2a6-f159-42b4-a5cc-6633223320fe}</Project>
+      <Name>Clouds.Storage.Core</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
       <ItemGroup>

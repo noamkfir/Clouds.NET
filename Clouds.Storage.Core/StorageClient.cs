@@ -17,7 +17,7 @@ namespace Clouds.Storage.Core
 
         public StorageClient(string connectionName)
         {
-            var section = (CloudsDotNetSection)ConfigurationManager.GetSection("CloudsDotNet");
+            var section = (CloudsDotNetSection)ConfigurationManager.GetSection("cloudsDotNet");
             var connection = (ConnectionElement)section.Connections[connectionName];
                              
             Init(connection.ConnectionString, connection.Provider);
