@@ -18,10 +18,8 @@ namespace Clouds.Storage.Core
         public StorageClient(string connectionName)
         {
             var section = (CloudsDotNetSection)ConfigurationManager.GetSection("CloudsDotNet");
-            var connection = (from c in section.Connections
-                              where c.Name == connectionName
-                              select c).FirstOrDefault();
-
+            var connection = (ConnectionElement)section.Connections[connectionName];
+                             
             Init(connection.ConnectionString, connection.Provider);
         }
 

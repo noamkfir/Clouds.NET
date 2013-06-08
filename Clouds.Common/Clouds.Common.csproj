@@ -43,6 +43,7 @@
     <Compile Include="Configuration\CloudProvider.cs" />
     <Compile Include="Configuration\CloudsDotNetSection.cs" />
     <Compile Include="Configuration\ConnectionElement.cs" />
+    <Compile Include="Configuration\ConnectionElementCollection.cs" />
     <Compile Include="Configuration\StringExtension.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

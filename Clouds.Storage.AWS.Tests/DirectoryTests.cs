@@ -1,7 +1,7 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Clouds.Storage.Core;
-using Clouds.Storage.Core.Interfaces;
+using Clouds.Common.Storage.Interfaces;
 
 namespace Clouds.Storage.AWS.Tests
 {

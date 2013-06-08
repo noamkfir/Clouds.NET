@@ -1,7 +1,7 @@
 ﻿using Amazon.Runtime;
 using Amazon.S3;
 using Amazon.S3.IO;
-using Clouds.Storage.Core.Interfaces;
+using Clouds.Common.Storage.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -87,6 +87,11 @@ namespace Clouds.Storage.AWS
         }
 
         public Task CreateFile(IStorageDirectory directory, string name, Stream file)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<IStorageDirectory> GetDirectory(Uri uri)
         {
             throw new NotImplementedException();
         }

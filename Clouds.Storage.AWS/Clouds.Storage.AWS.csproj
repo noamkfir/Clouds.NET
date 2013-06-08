@@ -56,6 +56,10 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Clouds.Common.Storage\Clouds.Common.Storage.csproj">
+      <Project>{dfc6ad53-541c-4321-ba28-f4fb43eb1688}</Project>
+      <Name>Clouds.Common.Storage</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Clouds.Common\Clouds.Common.csproj">
       <Project>{ef3c4042-2592-4105-80b8-d635a4d40de3}</Project>
       <Name>Clouds.Common</Name>

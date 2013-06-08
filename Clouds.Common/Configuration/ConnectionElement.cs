@@ -9,8 +9,14 @@ namespace Clouds.Common.Configuration
 {
     public class ConnectionElement : ConfigurationElement
     {
+        [ConfigurationProperty("name", IsKey = true, IsRequired = true)]
         public string Name { get; set; }
+
+        [ConfigurationProperty("provider", IsRequired = true)]
         public CloudProvider Provider { get; set; }
+
+        [ConfigurationProperty("connectionString", IsRequired = true)]
         public string ConnectionString { get; set; }
+
     }
 }

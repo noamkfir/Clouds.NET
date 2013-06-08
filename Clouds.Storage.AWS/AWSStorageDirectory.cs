@@ -1,6 +1,6 @@
 ﻿using Amazon.S3.IO;
 using Clouds.Storage.Core;
-using Clouds.Storage.Core.Interfaces;
+using Clouds.Common.Storage.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -34,6 +34,17 @@ namespace Clouds.Storage.AWS
         }
 
         public IEnumerable<IStorageFile> GetFiles()
+        {
+            throw new NotImplementedException();
+        }
+
+
+        public string Name
+        {
+            get { throw new NotImplementedException(); }
+        }
+
+        public IStorageDirectory GetRoot()
         {
             throw new NotImplementedException();
         }
