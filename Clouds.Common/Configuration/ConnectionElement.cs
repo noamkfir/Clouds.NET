@@ -9,9 +9,8 @@ namespace Clouds.Common.Configuration
 {
     public class ConnectionElement : ConfigurationElement
     {
-
+        public string Name { get; set; }
         public CloudProvider Provider { get; set; }
         public string ConnectionString { get; set; }
-        public string Name { get; set; }
     }
 }
