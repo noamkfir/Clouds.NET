@@ -46,8 +46,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AWSStorageDirectory.cs" />
+    <Compile Include="AWSStorageFile.cs" />
     <Compile Include="AWSStorageProvider.cs" />
     <Compile Include="Extensions\StorageDirectoryExtensions.cs" />
+    <Compile Include="Extensions\StorageFileExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
