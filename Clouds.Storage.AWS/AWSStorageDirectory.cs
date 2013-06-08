@@ -24,7 +24,10 @@ namespace Clouds.Storage.AWS
 
         public IStorageDirectory GetParent()
         {
-            return DirectoryInfo.Parent.ToStorageDirectory();
+            if (DirectoryInfo.Parent.Name == DirectoryInfo.Root.Name)
+                return null;
+            else
+                return DirectoryInfo.Parent.ToStorageDirectory();
         }
 
         public IEnumerable<IStorageDirectory> GetDirectories()

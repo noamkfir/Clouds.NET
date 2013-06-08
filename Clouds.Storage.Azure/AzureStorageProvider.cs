@@ -4,14 +4,18 @@ using System.Threading.Tasks;
 using Clouds.Common.Storage.Interfaces;
 using Microsoft.WindowsAzure.Storage;
 using Microsoft.WindowsAzure.Storage.Blob;
+using System.ComponentModel.Composition;
+using Clouds.Common.Configuration;
 
 namespace Clouds.Storage.Azure
 {
+    [Export("Azure", typeof(IStorageProvider))]
     public class AzureStorageProvider : IStorageProvider
     {
         private readonly CloudStorageAccount _account;
         private readonly IStorageDirectory _rootDir;
 
+        [ImportingConstructor]
         public AzureStorageProvider(string connectionString)
         {
             _account = CloudStorageAccount.Parse(connectionString);

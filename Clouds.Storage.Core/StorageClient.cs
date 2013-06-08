@@ -1,6 +1,7 @@
 ﻿using Clouds.Common.Configuration;
 using Clouds.Common.Storage.Interfaces;
 using System;
+using System.ComponentModel.Composition;
 using System.ComponentModel.Composition.Hosting;
 using System.Configuration;
 using System.IO;
@@ -30,8 +31,9 @@ namespace Clouds.Storage.Core
 
         private void Init(string connectionString, CloudProvider provider)
         {
-            var catalog = new AssemblyCatalog(Assembly.GetExecutingAssembly().CodeBase);
+            var catalog = new DirectoryCatalog(".");
             var container = new CompositionContainer(catalog);
+            container.ComposeExportedValue<string>(connectionString);
             _provider = container.GetExportedValue<IStorageProvider>(provider.ToString());
 
         }

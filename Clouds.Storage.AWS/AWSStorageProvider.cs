@@ -11,9 +11,11 @@ using Clouds.Common.Configuration;
 using Amazon.S3.Model;
 using System.IO;
 using Clouds.Common.Storage.Interfaces;
+using System.ComponentModel.Composition;
 
 namespace Clouds.Storage.AWS
 {
+    [Export("AWS", typeof(IStorageProvider))]
     public class AWSStorageProvider : IStorageProvider
     {
         const char ConnectionStringPartSeparator = ';';
@@ -22,6 +24,7 @@ namespace Clouds.Storage.AWS
         AmazonS3 _client;
         S3DirectoryInfo _rootDirectory;
 
+        [ImportingConstructor]
         public AWSStorageProvider(string connectionString)
         {
             // Parse the connection string to the access key and secret key

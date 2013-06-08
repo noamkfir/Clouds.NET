@@ -66,6 +66,15 @@ namespace Clouds.Storage.AWS.Tests
         }
 
         [TestMethod]
+        public void GetRootOfRootDirectory()
+        {
+            IStorageDirectory directory = _client.GetDirectory(null).Result;
+
+            Assert.AreEqual(directory.GetParent(), null);
+            // Cleanup
+        }
+
+        [TestMethod]
         public void GetFirstLevelSubDirectory()
         {
             string name = Guid.NewGuid().ToString();
