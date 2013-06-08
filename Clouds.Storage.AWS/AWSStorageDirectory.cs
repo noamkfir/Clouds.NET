@@ -1,11 +1,12 @@
 ﻿using Amazon.S3.IO;
-using Clouds.Storage.Core;
 using Clouds.Common.Storage.Interfaces;
+using Clouds.Storage.Core;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Clouds.Storage.AWS.Extensions;
 
 namespace Clouds.Storage.AWS
 {
@@ -16,37 +17,35 @@ namespace Clouds.Storage.AWS
         public AWSStorageDirectory(S3DirectoryInfo directoryInfo)
         {
             DirectoryInfo = directoryInfo;
+            this.Uri = new Uri(directoryInfo.GetDirectoryPath(), UriKind.Relative);
         }
 
-        public Uri Uri
-        {
-            get { throw new NotImplementedException(); }
-        }
+        public Uri Uri { get; private set; }
 
         public IStorageDirectory GetParent()
         {
-            throw new NotImplementedException();
+            return DirectoryInfo.Parent.ToStorageDirectory();
         }
 
         public IEnumerable<IStorageDirectory> GetDirectories()
         {
-            throw new NotImplementedException();
+            return DirectoryInfo.GetDirectories().Select(s3dir => s3dir.ToStorageDirectory());
         }
 
         public IEnumerable<IStorageFile> GetFiles()
         {
-            throw new NotImplementedException();
+            return DirectoryInfo.GetFiles().Select(s3file => s3file.ToStorageFile());
         }
 
 
         public string Name
         {
-            get { throw new NotImplementedException(); }
+            get { return DirectoryInfo.Name; }
         }
 
         public IStorageDirectory GetRoot()
         {
-            throw new NotImplementedException();
+            return DirectoryInfo.Bucket.ToStorageDirectory();
         }
     }
 }

@@ -1,7 +1,6 @@
 ﻿using Amazon.Runtime;
 using Amazon.S3;
 using Amazon.S3.IO;
-using Clouds.Common.Storage.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,6 +10,7 @@ using Clouds.Storage.AWS.Extensions;
 using Clouds.Common.Configuration;
 using Amazon.S3.Model;
 using System.IO;
+using Clouds.Common.Storage.Interfaces;
 
 namespace Clouds.Storage.AWS
 {
@@ -51,7 +51,7 @@ namespace Clouds.Storage.AWS
             AWSStorageDirectory newDirectory = null;
 
             // Verify the directory name ends with a / (specifies its a directory in AWS)
-            
+
 
             S3DirectoryInfo parentDirectory;
             if (parent == null)
@@ -65,8 +65,7 @@ namespace Clouds.Storage.AWS
 
             S3DirectoryInfo directory = parentDirectory.GetDirectory(name);
             // Get the full path of the directory, without the bucket name at the beginning, and the tracking :/
-            string fullPath = directory.FullName.Remove(0, directory.Bucket.Name.Length+2);
-            fullPath = fullPath.Replace('\\', '/');
+            string fullPath = directory.GetDirectoryPath();
 
             // Check if directory already exists 
             if (!directory.Exists)
@@ -86,14 +85,60 @@ namespace Clouds.Storage.AWS
             return newDirectory;
         }
 
-        public Task CreateFile(IStorageDirectory directory, string name, Stream file)
+        public async Task CreateFile(IStorageDirectory directory, string name, Stream file)
         {
-            throw new NotImplementedException();
+            AWSStorageDirectory s3Directory = (directory as AWSStorageDirectory);
+            if (s3Directory != null)
+            {
+                S3FileInfo s3File = s3Directory.DirectoryInfo.GetFile(name);
+                if (!s3File.Exists)
+                {
+                    string fullName = s3Directory.DirectoryInfo.GetDirectoryPath() + name;
+
+                    var request = new PutObjectRequest
+                    {
+                        BucketName = s3File.Directory.Bucket.Name,
+                        Key = fullName,
+                        InputStream = file
+                    };
+
+                    PutObjectResponse response = await Task.Factory.FromAsync(
+                                                    _client.BeginPutObject(request, null, null),
+                                                    (result) => _client.EndPutObject(result));
+                }
+                else
+                {
+                    throw new ArgumentException("File already exists");
+                }
+            }
+            else
+            {
+                throw new ArgumentException("directory parameter must be created through the AWS library");
+            }
         }
 
-        public Task<IStorageDirectory> GetDirectory(Uri uri)
+        public async Task<IStorageDirectory> GetDirectory(Uri uri)
         {
-            throw new NotImplementedException();
+            IStorageDirectory response;
+            S3DirectoryInfo directory;
+            if (uri == null)
+            {
+                directory = _rootDirectory;
+            }
+            else
+            {
+                directory = _rootDirectory.GetDirectory(uri.AsKey());
+            }
+
+            if (directory.Exists)
+            {
+                response = directory.ToStorageDirectory();
+            }
+            else
+            {
+                throw new ArgumentException("Directory not found");
+            }
+            return response;
         }
     }
 }

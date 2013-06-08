@@ -17,5 +17,15 @@ namespace Clouds.Storage.AWS.Extensions
             // Copy properties
             return targetDirectory;
         }
+
+        static public string GetDirectoryPath(this S3DirectoryInfo directoryInfo)
+        {
+            return directoryInfo.FullName.Remove(0, directoryInfo.Bucket.Name.Length + 2).Replace("\\", "/");
+        }
+
+        static public string AsKey(this Uri objectUri)
+        {
+            return objectUri.ToString().Replace("/", "\\");            
+        }
     }
 }
